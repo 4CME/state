@@ -1,5 +1,5 @@
 <?php
-class OpenDoorTest extends PHPUnit_Framework_TestCase
+class ClosedDoorTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @var Door
@@ -12,23 +12,23 @@ class OpenDoorTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->door = new Door(new OpenDoorState);
+        $this->door = new Door(new ClosedDoorState);
     }
 
     /**
      * @covers Door::isOpen
      */
-    public function testIsOpen()
+    public function testIsNotOpen()
     {
-        $this->assertTrue($this->door->isOpen());
+        $this->assertFalse($this->door->isOpen());
     }
 
     /**
      * @covers Door::isClosed
      */
-    public function testIsNotClosed()
+    public function testIsClosed()
     {
-        $this->assertFalse($this->door->isClosed());
+        $this->assertTrue($this->door->isClosed());
     }
 
     /**
@@ -41,33 +41,34 @@ class OpenDoorTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers Door::open
-     * @covers AbstractDoorState::open
-     * @expectedException IllegalStateTransitionException
+     * @covers ClosedDoorState::open
+     * @uses   Door::isOpen
      */
-    public function testCannotBeOpened()
+    public function testCanBeOpened()
     {
         $this->door->open();
+        $this->assertTrue($this->door->isOpen());
     }
 
     /**
      * @covers Door::close
-     * @covers OpenDoorState::close
-     * @uses   Door::isClosed
+     * @covers AbstractDoorState::close
+     * @expectedException IllegalStateTransitionException
      */
-    public function testCanBeClosed()
+    public function testCannotBeClosed()
     {
         $this->door->close();
-        $this->assertTrue($this->door->isClosed());
     }
 
     /**
      * @covers Door::lock
-     * @covers AbstractDoorState::lock
-     * @expectedException IllegalStateTransitionException
+     * @covers ClosedDoorState::lock
+     * @uses   Door::isLocked
      */
-    public function testCannotBeLocked()
+    public function testCanBeLocked()
     {
         $this->door->lock();
+        $this->assertTrue($this->door->isLocked());
     }
 
     /**

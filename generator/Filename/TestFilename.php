@@ -19,6 +19,6 @@ class TestFilename
      */
     public function __toString()
     {
-        return __DIR__ . '/../../example/tests/' . $this->testName . '.php';
+        return __DIR__ . '/../../code_output/tests/' . $this->testName . '.php';
     }
 }

@@ -21,7 +21,7 @@ states of the door.
 
 ### DoorState
 
-The `DoorState` interface ([source](example/src/DoorState.php)) declares an
+The `DoorState` interface ([source](code_output/src/DoorState.php)) declares an
 interface common to all classes that represent different states.
 
 ```php
@@ -37,7 +37,7 @@ interface DoorState
 
 ### AbstractDoorState
 
-The `AbstractDoorState` class ([source](example/src/AbstractDoorState.php))
+The `AbstractDoorState` class ([source](code_output/src/AbstractDoorState.php))
 implements the operations required by the `DoorState` interface in such a way
 that all methods raise an `IllegalStateTransitionException` by default.
 
@@ -69,9 +69,9 @@ abstract class AbstractDoorState implements DoorState
 
 ### OpenDoorState, ClosedDoorState, and LockedDoorState
 
-`OpenDoorState` ([source](example/src/OpenDoorState.php)),
-`ClosedDoorState` ([source](example/src/ClosedDoorState.php)),
-and `LockedDoorState` ([source](example/src/LockedDoorState.php)) are child
+`OpenDoorState` ([source](code_output/src/OpenDoorState.php)),
+`ClosedDoorState` ([source](code_output/src/ClosedDoorState.php)),
+and `LockedDoorState` ([source](code_output/src/LockedDoorState.php)) are child
 classes of `AbstractDoorState` that overwrite the `open()`, `close()`, `lock()`,
 and `unlock()` methods appropriately to return the object that represents the
 new state. `OpenDoorState::close()` returns an instance of `ClosedDoorState`,
@@ -90,7 +90,7 @@ class OpenDoorState extends AbstractDoorState
 
 ### Door
 
-The `Door` class ([source](example/src/Door.php)) maintains a state object (an
+The `Door` class ([source](code_output/src/Door.php)) maintains a state object (an
 instance of a subclass of `AbstractDoorState`) that represents the current
 state of the door:
 

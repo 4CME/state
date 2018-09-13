@@ -1,5 +1,5 @@
 <?php
-class ___STATE___Test extends PHPUnit_Framework_TestCase
+class ___STATE___Test extends PHPUnit\Framework\TestCase
 {
     /**
      * @var ___CLASS___
